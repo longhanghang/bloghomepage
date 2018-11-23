@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="css/frame/bootstrap-3.3.7-dist/bootstrap.min.css">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="css/frame/bootstrap-3.3.7-dist/bootstrap-theme.min.css">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0
+        }
+    body{
+        width: 100%;
+        height:100%;
+        overflow: hidden;
+        }
+    #canvasBox{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: #fff
+        }
+
+    .navbar-custom {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3)
+}
+
+.navbar-custom .navbar-toggle {
+    color: #fff;
+    background-color: rgba(255,255,255,.2);
+    font-size: 12px
+}
+
+.navbar-custom .nav li a:active,.navbar-custom .nav li a:focus,.navbar-custom .nav li a:hover {
+    background-color: transparent;
+    outline: 0
+}
+
+.navbar-custom .navbar-toggle:active,.navbar-custom .navbar-toggle:focus {
+    outline: 0
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 700
+}
+
+.navbar-custom .navbar-brand:focus {
+    outline: 0
+}
+
+.navbar-custom a {
+    color: #fff
+}
+
+.navbar-custom .navbar-nav li a {
+    transition: background .3s ease-in-out
+}
+
+.navbar-custom .navbar-nav li a:hover {
+    color: rgba(255,255,255,.8)
+}
+
+.navbar-custom .navbar-nav li.active {
+    outline: 0
+}
+
+.navbar-custom .navbar-nav li.active a {
+    background-color: rgba(255,255,255,.3)
+}
+
+.navbar-custom .navbar-nav li.active a:hover {
+    color: #fff
+}
+
+@media (min-width: 768px) {
+    .navbar-custom {
+        padding:20px 0;
+        border-bottom: none;
+        letter-spacing: 1px;
+        background: 0 0;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .navbar-custom.top-nav-collapse {
+        padding: 0;
+        background: #000;
+        border-bottom: 1px solid rgba(255,255,255,.3);
+    }
+    .myself{
+        display: table;
+    }
+    .myself-body{
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+</style>
+<body>
+<div id = "home">
+<div id="canvasBox"></div>
+<nav class="navbar navbar-custom fixed-top">
+  <a href="#" class="navbar-brand">
+         <span>折腾行</span>
+  </a>
+  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#collapsible">
+      <span class="navbar-toggler-icon">菜单</span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsible">
+  <ul class="nav navbar-nav">
+      <li class="nav-item active">
+          <a href="/blog" class="nav-link">😊博客</a>
+      </li>
+      <li class="nav-item">
+          <a href="#about-me" class="nav-link">😒关于我</a>
+      </li>
+      <li class="nav-item">
+          <a href="#love" class="nav-link">😊行瑶爱</a>
+      </li>
+      <li class="nav-item">
+          <a href="#" class="nav-link">😉待续</a>
+      </li>    
+  </ul>
+  
+</nav>
+<header class = "myself">
+    <div class = "myself-body">
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-md-8">
+                    <h1 class = "brand-heading">Everything is possible 💪</h1>
+                    <p class = "myself-text">越努力 越幸运<br>"create By longhanghang"</p>
+                    <a class = "btn btn-circle page-scroll"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</div>
+<script src="js/frame/jquery-3.3.1.min.js"></script>
+<script src="js/frame/bootstrap-3.3.7-dist/bootstrap.min.js"></script>
+<script src="js/three.min.js"></script>
+<script>
+    var canvasBox = document.getElementById("canvasBox")
+    var W = canvasBox.clientWidth
+    var H = canvasBox.clientHeight
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight)
+    }
+
+    window.addEventListener('resize', onWindowResize, false)
+
+    var num = 0;
+    var scene, camera, renderer, light;
+    function intScene() {
+        scene = new THREE.Scene()
+    }
+
+    function intCamera () {
+        camera = new THREE.PerspectiveCamera(45, W/H, 1,1000);
+        camera.position.set(0, 0, 500);
+        camera.up.set(0, 1, 0)
+        camera.lookAt({x: 0, y:0, z:0})
+    }
+
+    function intRender() {
+        renderer = new THREE.WebGLRenderer({antialias:true})
+        renderer.setSize(W, H)
+        canvasBox.appendChild(renderer.domElement)
+    }
+
+    function intLight() {
+        light = new THREE.DirectionalLight(0xffffff, 1)
+        light.position.set(50, 50, 500)
+        scene.add(light)
+    }
+
+    var xkbg, earth, cloud;
+    var SEPARATION = 25, AMOUNTX = 34, AMOUNTY = 20;
+    var particles, particle, count = 0;
+    function intModels() {
+      /* 宇宙背景 */
+      var yz_geometry = new THREE.SphereGeometry(500, 500, 50);
+      var yz_material = new THREE.MeshPhongMaterial({
+        map: THREE.ImageUtils.loadTexture('./images/negy.jpg'),
+        side: THREE.DoubleSide
+      });
+      xkbg = new THREE.Mesh(yz_geometry, yz_material);
+      xkbg.position.set(0, 0, 0);
+      scene.add(xkbg);
+      //地球
+      var earth_geometry = new THREE.SphereGeometry(100, 50, 50);
+      var earth_material = new THREE.MeshPhongMaterial({
+        map: THREE.ImageUtils.loadTexture('./images/earth4.jpg'),
+        side: THREE.DoubleSide
+      });
+      earth = new THREE.Mesh(earth_geometry, earth_material);
+      earth.position.set(0, 0, 0);
+      earth.rotation.x = 0.42;
+      earth.rotation.y = 60;
+      scene.add(earth);
+      //云层
+      var cloud_geometry = new THREE.SphereGeometry(101, 50, 50);
+      var cloud_material = new THREE.MeshPhongMaterial({
+        map: THREE.ImageUtils.loadTexture('./images/earth_cloud.png'),
+        transparent: true,
+        opacity: .8
+      });
+      cloud = new THREE.Mesh(cloud_geometry, cloud_material);
+      cloud.position.set(0, 0, 0);
+      earth.add(cloud);
+      //云层2
+      var cloud2_geometry = new THREE.SphereGeometry(102, 50, 50);
+      var cloud2_material = new THREE.MeshPhongMaterial({
+        map: THREE.ImageUtils.loadTexture('./images/earth_cloud.png'),
+        transparent: true,
+        opacity: .8
+      });
+      cloud2 = new THREE.Mesh(cloud2_geometry, cloud2_material);
+      cloud2.position.set(0, 0, 0);
+      cloud2.rotation.y = 10;
+      earth.add(cloud2);
+    }
+
+    var mouseX, mouseY, isMove = true;
+    //自转
+    function zizhuan() {
+      if (isMove) {
+        requestAnimationFrame(zizhuan);
+        earth.rotation.y -= 0.0005;
+        renderer.render(scene, camera);
+      }
+      xkbg.rotation.y -= 0.0005;
+    }
+    //拖拽
+    document.onmousedown = function(e) {
+      isMove = false;
+      mouseX = e.pageX;
+      mouseY = e.pageY;
+    }
+    document.onmousemove = function rt(e) {
+      if (!isMove) {
+        var disX = e.pageX - mouseX;
+        var disY = e.pageY - mouseY;
+        requestAnimationFrame(zizhuan);
+        earth.rotation.x = earth.rotation.x > 0.8 ? 0.8 : earth.rotation.x;
+        earth.rotation.x = earth.rotation.x < -0.8 ? -0.8 : earth.rotation.x;
+        earth.rotation.x += disY * 0.00005 * Math.PI;
+        earth.rotation.y += disX * 0.00005 * Math.PI;
+        renderer.render(scene, camera);
+      }
+    }
+    document.onmouseup = function() {
+      console.log(xkbg.rotation.y)
+      console.log(earth.rotation.x)
+      isMove = true;
+      setTimeout(function() {
+        zizhuan();
+      }, 1000)
+    }
+    
+    //滑动鼠标让地球放大缩小
+    function intsScale() {
+      $(document).on('mousewheel DOMMouseScroll', function(ev) {
+        var e = ev || event;
+        e.preventDefault();
+        var value = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+        var delta = Math.max(-1, Math.min(1, value));
+        if (delta == 1) {
+          num++;
+          num = num > 10 ? 10 : num;
+        } else {
+          num--;
+          num = num < -15 ? -15 : num;
+        }
+        camera.position.set(0, 0, 400 + num * 10);
+      });
+    }
+    
+    function intStart() {
+      intScene();
+      intCamera();
+      intRender();
+      intLight();
+      intModels();
+      zizhuan();
+      intsScale();
+      renderer.render(scene, camera);
+    }
+
+    intStart();
+</script>
+</body>
+</html>
