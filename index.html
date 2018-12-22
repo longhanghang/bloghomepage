@@ -1,521 +1,114 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title></title>
-		<meta charset="UTF-8"/>
-		<link rel="stylesheet" href="css/frame/bootstrap-3.3.7-dist/bootstrap.min.css">
-    	<link rel="stylesheet" href="css/frame/bootstrap-3.3.7-dist/bootstrap-theme.min.css">
-		<style>
+<head>
+	<title></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+	<link rel="stylesheet" href="css/frame/bootstrap-3.3.7-dist/bootstrap.min.css">
+	<link rel="stylesheet" href="css/frame/bootstrap-3.3.7-dist/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/homePage.css">
+</head>
 
-			html,body,#home-page{
-			  height: 100%;
-			}
-			body {
-			  margin: 0;
-				}
-			#space {
-				width: 100%;
-				height: 100%;
-				position: fixed;
-				top: 0px;
-				left: 0px;
-				background: #000;
-				z-index:-10;
-			}
-    .navbar-blog {
-    margin-bottom: 0;
-    border-bottom: 1px solid rgba(255,255,255,.3);
-}
-
-.navbar-blog .nav li a:active,.navbar-blog .nav li a:focus,.navbar-blog .nav li a:hover {
-    background-color: transparent;
-}
-
-.navbar-blog .navbar-brand {
-    font-weight: 700
-}
-.navbar-blog a {
-    color: #fff
-}
-.navbar-blog .navbar-nav li a:hover {
-    color: rgba(255, 255, 255, 0.466)
-}
-.navbar-blog .navbar-nav li.active{
-   background:rgba(255,255,255,.3)
-}
-#collapsible{
-	background:#000;
-}
-.myself{
-			width:100%;
-			height:100%;
-			display: table;
-			text-align: center;
-			color:#fff;
-    }
-.myself-body{
-			display: table-cell;
-			vertical-align: middle;
-    }
- .myself .brand-heading{
-	 font-weight: 700;
-	 margin-bottom:35px;
- }	
- .myself .myself-text{
-	font-size:24px;
-	margin-bottom:50px;
- }
-#image{
-			width:800px;
-			height:500px;
-			position: absolute;
-			left:50%;
-			top:50%;
-			margin-left:-400px;
-			margin-top:-250px;
-			opacity: 0.6;
-		}
-		#image img{
-			width:800px;
-			height:54\00px;
-		}
-.btn-circle{
-	width:70px;
-	height:70px;
-	border:2px solid #fff;
-	border-radius: 100%;
-	font-size:40px;	
-}	
-#blog{
-	height:100%;
-	width:100%;
-	text-align: center;
-	position: relative;
-}	
-.blog-body{
-	color:#fff;
-	width:100%;
-	position: absolute;
-	top:45%;
-}
-.blog-body p{
-	font-size:36px;
-	margin-bottom:45px;
-}
-.blog-body .btn{
-		background:transparent;
-		text-shadow: none;
-    color: #22ea89;
-    border: 1px solid #22ea89;
-}
-#about{
-	margin-top:80px;
-}
-.about-body{
-	color: #fff;
-	text-align: center;
-}
-.about-body p,.contact-body p,.sports p{
-	font-size:20px;
-	margin-top:30px;
-}
-
-#contact{
-	margin-top:80px;
-} 
-.contact-body{
-	color:#fff;
-	text-align: center;
-}
-@keyframes finger{
-	0%{
-		transform: translate(0px,0px)
-}
-
-50%{
-
-transform: translate(0px,10px);
-
-}
-100%{
-
-transform: translate(0px,0px)
-
-}
-}
-.finger{
-	
-
-animation: finger 1s infinite;
-
-}
-
-@keyframes interest{
-			0%{ color:1af252;
-				text-shadow: 0 0 4px #249f43}
-            50%{ color:green;text-shadow: 0 0 40px #249f43}
-            100%{ color:#09521c;text-shadow: 0 0 4px #249f43}
-
-}
-
-@keyframes contact-number{
-	0%,100%{
-		transform: translateX(0);	
-	}
-	10%,30%,50%,70%,90%{
-		transform: translate(-5px)
-	}
-	20%,40%,50%,80%{
-		transform: translateX(5px);
-	}
-}
-
-
-.interest{
-	animation: contact-number 1s infinite;
-}
-
-.contact-number{
-	color:green;
-	animation: interest 1s infinite;
-}
-#sports{
-	margin-top:90px;
-}
-.sports{
-	color:#fff;
-text-align: center;
-}
-.sports img{
-	width:300px;
-	height:380px;
-}
-		</style>
-
-	</head>
-	<body>
-		<div id = "home-page">
-			<div id = "image">
-				<img src = "images/blog.png">
-			</div>
-			<canvas id="space"></canvas>
+<body>
+	<div id="home-page">
+		<div id="image">
+			<img src="images/blog.png">
+		</div>
+		<canvas id="space"></canvas>
 		<nav class="navbar navbar-blog navbar-fixed-top">
 			<a href="https://longhanghang.github.io/" class="navbar-brand">
-						 <span>折腾行</span>
+				<span>折腾行</span>
 			</a>
 			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#collapsible">
-					<span class="navbar-toggler-icon">菜单</span>
+				<span class="navbar-toggler-icon">菜单</span>
 			</button>
 			<div class="collapse navbar-collapse" id="collapsible">
-			<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav">
 					<li class="nav-item active">
-							<a href="https://longhanghang.github.io/blog/" class="nav-link">😊博客</a>
+						<a href="https://longhanghang.github.io/blog/" class="nav-link">😊博客</a>
 					</li>
 					<li class="nav-item">
-							<a href="#about" class="nav-link">😒关于我</a>
+						<a href="#about" class="nav-link">😒关于我</a>
 					</li>
 					<li class="nav-item">
-							<a href="#contact" class="nav-link">😊联系我</a>
+						<a href="#contact" class="nav-link">😊联系我</a>
 					</li>
 					<li class="nav-item">
-							<a href="#sports" class="nav-link">😉运动</a>
-					</li>    
-			</ul>
-			
+						<a href="#sports" class="nav-link">😉运动</a>
+					</li>
+				</ul>
+
 		</nav>
-		<header class = "myself">
-				<div class = "myself-body">
-						<div class = "container">
-								<div class = "row">
-										<div class = "col-md-8 col-md-offset-2">
-												<h1 class = "brand-heading">Everything is possible 💪</h1>
-												<p class = "myself-text">越努力 越幸运<br>Create By Longhanghang</p>
-												<a href = "#blog" class = "btn btn-circle page-scroll">👇</a>
-										</div>
-								</div>
+		<header class="myself">
+			<div class="myself-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<h1 class="brand-heading">Everything is possible 💪</h1>
+							<p class="myself-text">越努力 越幸运<br>Create By Longhanghang</p>
+							<a href="#blog" class="btn btn-circle page-scroll">👇</a>
 						</div>
+					</div>
 				</div>
+			</div>
 		</header>
-		<section id = "blog">
-				<div class = "blog-body">
-					<p>行行的博客</p>
-					<a href="https://longhanghang.github.io/blog/" class = "btn btn-default btn-lg">👉 进入博客 👈</a>
-				</div>
+		<section id="blog">
+			<div class="blog-body" id="blog-body">
+				<p>行行的博客</p>
+				<a href="https://longhanghang.github.io/blog/" class="btn btn-default btn-lg">👉 进入博客 👈</a>
+			</div>
 		</section>
-		<section id = "about">
-				<div class = "container">
-				    <div class = "row">
-							<div class = "about-body col-md-8 col-md-offset-2">
-								<h1>About Longhanghang</h1>
-								<p>95后狮子男一枚，毕业于重庆理工大学，性取向正常，喜欢健健身，吃吃鸡</p>
-								<p>从C到java再到前端一路走过来，迷茫过，徘徊过，但是现在毕业一年半的我无比坚定，前端，任你技术更新再快，我都要拥抱你</p>
-								<P>始终相信没有写不完的代码，只有改不完的BUG，加不完的班！</P>
-								<p>Fuck code!!!</p>
-							</div>
-						</div>
+		<section id="about">
+			<div class="container">
+				<div class="row">
+					<div class="about-body col-md-8 col-md-offset-2">
+						<h1>About Longhanghang</h1>
+						<p>95后狮子男一枚，毕业于重庆理工大学，性取向正常，喜欢健健身，吃吃鸡</p>
+						<p>从C到java再到前端一路走过来，迷茫过，徘徊过，但是现在毕业一年半的我无比坚定，前端，任你技术更新再快，我都要拥抱你</p>
+						<P>始终相信没有写不完的代码，只有改不完的BUG，加不完的班！</P>
+						<p>Fuck code!!!</p>
+					</div>
 				</div>
+			</div>
 		</section>
-		<section id = "contact">
-			<div class = "container">
-				<div class = "row">
-					<div class = "contact-body col-md-8 col-md-offset-2">
+		<section id="contact">
+			<div class="container">
+				<div class="row">
+					<div class="contact-body col-md-8 col-md-offset-2">
 						<h1>联系博猪</h1>
-						<p class = "interest">如果你对吃鸡感兴趣</p>
-						<p class = "interest">如果你对鬼泣感兴趣</p>
-						<P class = "interest">如果你对code感兴趣</P>
+						<p class="interest">如果你对吃鸡感兴趣</p>
+						<p class="interest">如果你对鬼泣感兴趣</p>
+						<P class="interest">如果你对code感兴趣</P>
 						<p>................</p>
 						<p>上面的都不重要，最重要的是你愿意和博猪交朋友，请记得加博猪的qq或者微信</p>
-						<p class = "finger">👇</p>
-						<p class = "contact-number">微信:13658389625</p>
-						<p class = "contact-number">qq:736118067</p>
+						<p class="finger">👇</p>
+						<p class="contact-number">微信:13658389625</p>
+						<p class="contact-number">qq:736118067</p>
 
 					</div>
 				</div>
 			</div>
 
 		</section>
-		<section id= "sports">
-			<div class = sports>
+		<section id="sports">
+			<div class=sports>
 				<h1>运动</h1>
 				<p>生命不息，运动不止</p>
-				<img src = "images/greensport.png"/>
+				<img src="images/greensport.png" />
+			</div>
+		</section>
+		<section id="comments-block">
+			<h1>雁过留声，人过留名</h1>
+			<div class="comment">
+
 			</div>
 		</section>
 	</div>
-		<script src="js/frame/jquery-3.3.1.min.js"></script>
-		<script src="js/frame/bootstrap-3.3.7-dist/bootstrap.min.js"></script>
-		<script>
-			var index = 0;
-			var head_footer = {};
-			head_footer.allViewSize = [{id:'#blog'},{id:'#about'},{id:'#contact'},{id:'#sports'}];
-			head_footer.reGetAllViewSize = function () {
-				for (var i = 0; i < head_footer.allViewSize.length; i++) {
-					var obj = head_footer.allViewSize[i];
-					obj.min = $(obj.id).position().top;
-					obj.max = $(obj.id).position().top + $(obj.id).height();
-				}
-			};
-			
-				$("a").click(function(){
-					if($(this).attr("href").indexOf("#")!=-1){
-						var targetId = $(this).attr("href");
-						index = 1;
-						$("html,body").animate({scrollTop: $(""+targetId).offset().top-50}, 800);
-					}
-				})
-				head_footer.reGetAllViewSize();
-				$(window).scroll(function(){
-					console.log(index)
-					if(index==1){
-						index = 0;
-						return;
-					}
-					var wst = $(window).scrollTop()+100;
-					console.log(wst)
-					for (var i = 0; i < head_footer.allViewSize.length; i++) {
-					var obj = head_footer.allViewSize[i];
-					if (wst >= obj.min && wst < obj.max) {
-
-                var allA = $('.navbar-nav > li');
-                if ($(allA[i]).hasClass("active")) {
-                    return;
-                }
-
-                //开始判断选中
-                for (var j = 0; j < allA.length; j++) {
-                    $(allA[j]).removeClass('active');
-                }
-                $(allA[i]).addClass('active');
-            }
-        }
-				})
-		</script>
-		<script>
-				//based on an Example by @curran
-				window.requestAnimFrame = (function(){   return  window.requestAnimationFrame})();
-				var canvas = document.getElementById("space");
-				var c = canvas.getContext("2d");
-				
-				var numStars = 1900;
-				var radius = '0.'+Math.floor(Math.random() * 9) + 1  ;
-				var focalLength = canvas.width *2;
-				var warp = 0;
-				var centerX, centerY;
-				
-				var stars = [], star;
-				var i;
-				
-				var animate = true;
-				
-				initializeStars();
-				
-				function executeFrame(){
-					
-					if(animate)
-						requestAnimFrame(executeFrame);
-					moveStars();
-					drawStars();
-				}
-				
-				function initializeStars(){
-					centerX = canvas.width / 2;
-					centerY = canvas.height / 2;
-					
-					stars = [];
-					for(i = 0; i < numStars; i++){
-						star = {
-							x: Math.random() * canvas.width,
-							y: Math.random() * canvas.height,
-							z: Math.random() * canvas.width,
-							o: '0.'+Math.floor(Math.random() * 99) + 1
-						};
-						stars.push(star);
-					}
-				}
-				
-				function moveStars(){
-					for(i = 0; i < numStars; i++){
-						star = stars[i];
-						star.z--;
-						
-						if(star.z <= 0){
-							star.z = canvas.width;
-						}
-					}
-				}
-				
-				function drawStars(){
-					var pixelX, pixelY, pixelRadius;
-					
-					// Resize to the screen
-					if(canvas.width != window.innerWidth || canvas.width != window.innerWidth){
-						canvas.width = window.innerWidth;
-						canvas.height = window.innerHeight;
-						initializeStars();
-					}
-					if(warp==0)
-					{c.fillStyle = "#000";
-					c.fillRect(0,0, canvas.width, canvas.height);}
-					c.fillStyle = "rgba(209, 255, 255, "+radius+")";
-					for(i = 0; i < numStars; i++){
-						star = stars[i];
-						
-						pixelX = (star.x - centerX) * (focalLength / star.z);
-						pixelX += centerX;
-						pixelY = (star.y - centerY) * (focalLength / star.z);
-						pixelY += centerY;
-						pixelRadius = 1 * (focalLength / star.z);
-						
-						c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
-						c.fillStyle = "rgba(209, 255, 255, "+star.o+")";
-					}
-				}	
-				executeFrame();
-				
-		</script>
-		<script>
-			(
-				function(){
-					var $ = {};			
-				$.Particle = function( opt ) {
-					this.radius = 6;
-					this.x = opt.x;
-					this.y = opt.y;
-					this.angle = opt.angle;
-					this.speed = opt.speed;
-					this.accel = opt.accel;
-					this.decay = 0.01;
-					this.life = 1;
-				};
-				
-				$.Particle.prototype.step = function( i ) {
-					this.speed += this.accel;
-					this.x += Math.cos( this.angle ) * this.speed;
-					this.y += Math.sin( this.angle ) * this.speed;
-					this.angle += $.PI / 64;
-					this.accel *= 1.01;
-					this.life -= this.decay;
-					
-					if( this.life <= 0 ) {
-						$.particles.splice( i, 1 );
-					}
-				};
-				
-				$.Particle.prototype.draw = function( i ) {
-					$.ctx.fillStyle = $.ctx.strokeStyle = 'hsla(' + ( $.tick + ( this.life * 120 ) ) + ', 100%, 60%, ' + this.life + ')';
-					$.ctx.beginPath();
-					if( $.particles[ i - 1 ] ) {
-						$.ctx.moveTo( this.x, this.y );
-						$.ctx.lineTo( $.particles[ i - 1 ].x, $.particles[ i - 1 ].y );
-					}
-					$.ctx.stroke();
-					
-					$.ctx.beginPath();
-					$.ctx.arc( this.x, this.y, Math.max( 0.001, this.life * this.radius ), 0, $.TWO_PI );
-					$.ctx.fill();
-					
-					var size = Math.random() * 1.25;
-					$.ctx.fillRect( ~~( this.x + ( ( Math.random() - 0.5 ) * 55 ) * this.life ), ~~( this.y + ( ( Math.random() - 0.5 ) * 55 ) * this.life ), size, size );
-				}
-				
-				$.step = function() {
-					$.particles.push( new $.Particle({
-						x: $.width / 2 + Math.cos( $.tick / 20 ) * $.min / 2,
-						y: $.height / 2 + Math.sin( $.tick / 20 ) * $.min / 2,
-						angle: $.globalRotation + $.globalAngle,
-						speed: 0,
-						accel: 0.01
-					}));
-					
-					$.particles.forEach( function( elem, index ) {
-						elem.step( index );
-					});
-					
-					$.globalRotation += $.PI / 6;
-					$.globalAngle += $.PI / 6;
-				};
-				
-				$.draw = function() {
-					$.ctx.clearRect( 0, 0, $.width, $.height );
-					
-					$.particles.forEach( function( elem, index ) {
-						elem.draw( index );
-					});
-				};
-				
-				$.init = function() {
-					$.canvas = document.createElement( 'canvas' );
-					$.ctx = $.canvas.getContext( '2d' );
-					$.width = 700;
-					$.height = 700;
-					$.canvas.width = $.width * window.devicePixelRatio;
-					$.canvas.height = $.height * window.devicePixelRatio;
-					$.canvas.style.width = $.width + 'px';
-					$.canvas.style.height = $.height + 'px';
-					$.canvas.class = 'canvas1'
-					$.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-					$.min = $.width * 0.5;
-					$.particles = [];
-					$.globalAngle = 0;
-					$.globalRotation = 0;
-					$.tick = 0;
-					$.PI = Math.PI;
-					$.TWO_PI = $.PI * 2;
-					$.ctx.globalCompositeOperation = 'lighter';
-					document.getElementById("blog").appendChild( $.canvas );
-					$.loop();
-				};
-				
-				$.loop = function() {
-					requestAnimationFrame( $.loop );
-					$.step();
-					$.draw();
-					$.tick++;
-				};
-				
-				$.init();
-				}
-			)()
-				</script>
-	</body>
+	<script src="js/frame/jquery-3.3.1.min.js"></script>
+	<script src="js/frame/bootstrap-3.3.7-dist/bootstrap.min.js"></script>
+	<script src="js/frame/valine/av-min.js"></script>
+	<script src='js/frame/valine/Valine.min.js'></script>
+	<script src = "js/homePageCanvas.js"></script>
+	<script src = "js/homePage.js"></script>
+</body>
 </html>
